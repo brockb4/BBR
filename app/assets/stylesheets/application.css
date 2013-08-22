@@ -1,0 +1,198 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+* = require twitter/bootstrap
+
+body {
+margin : 0;
+padding : 0;
+font : 73% "lucida sans", tahoma, "Trebuchet MS", arial, verdana, sans-serif;
+color : #555;
+background : #f7f7f7;
+}
+#container {
+width : 99.5%;
+margin-left : auto;
+margin-right : auto;
+padding : 0;
+line-height : 1.5em;
+}
+#banner {
+height : 150px;
+padding : 0;
+background : #f7f7f7 url(images/image00.jpg) no-repeat;
+color : #333;
+}
+#banner h1 {margin : 0;
+padding : 5px;
+background : transparent;
+color : #fff;
+}
+#navlist {
+padding : 4px 5px 5px 0;
+margin : 0 0 20px 0;
+text-align : left;
+letter-spacing : 3px;
+color : #fff;
+background : #476042;
+}
+#navlist li {
+list-style : none;
+margin : 0;
+display : inline;
+}
+#navlist li a {
+padding : 5px 0.75em;
+margin : 0;
+color : #fff;
+background : #476042;
+text-decoration : none;
+}
+#navlist li a:link {
+color : #fff;
+background : #476042;
+}
+#navlist li a:visited {
+color : #fff;
+background : #476042;
+}
+#navlist li a:hover {
+color : #000;
+background : #7ABA2E;
+}
+#navlist li a#current {
+color : #fff;
+background : #7ABA2E;
+}
+.menu ul li {
+line-height : 1.8em;
+margin : 0 10px 0 0;
+padding : 0;
+list-style-type : square;
+color : #476042;
+background : inherit;
+}
+.menu ul li a {
+color : #f17c0b;
+background : inherit;
+}
+.menu ul li a:hover {
+color : #7ABA2E;
+background : inherit;
+}
+#content {
+padding : 0;
+margin-left : 170px;
+margin-right : 170px;
+border-left : 1px dashed #333;
+border-right : 1px dashed #333;
+color : #555;
+background-color : #f7f7f7;
+}
+#content p {
+margin : 20px;
+}
+#sidebar-a {
+float : left;
+width : 140px;
+margin-left : 5px;
+padding : 0 5px 0 5px;
+color : #666;
+background : #f7f7f7;
+}
+#sidebar-b {
+float : right;
+width : 140px;
+margin : 0 5px 0 0 ;
+padding : 0 5px 15px 5px;
+color : #333;
+background : #faf8e9;
+}
+#footer {
+clear : both;
+padding : 5px;
+margin : 0;
+background : #476042;
+color : #f7f7f7;
+}
+
+a {
+text-decoration : none;
+color : #f17c0b;
+background : inherit;
+}
+a:hover {
+text-decoration : underline;
+color : #aaa;
+background : inherit;
+}
+a img {
+border : 0;
+}
+.border {
+padding : 10px;
+margin : 10px;
+border : 1px solid #476042;
+}
+.imgleft {
+float : left;
+border : 1px solid #90b905;
+margin : 5px 10px 10px 15px;
+padding : 5px;
+}
+h1 {
+margin : 20px;
+padding : 5px;
+font-size : 150%;
+letter-spacing : 3px;
+color : #fff;
+background : #476042;
+}
+h2 {
+padding-left : 20px;
+font-size : 140%;
+text-transform : uppercase;
+letter-spacing : 10px;
+color : #476042;
+background : inherit;
+}
+h3 {
+padding : 5px;
+text-transform : uppercase;
+font-size : 110%;
+color : #fff;
+background : #476042;
+}
+h4 {
+padding : 5px;
+text-transform : uppercase;
+font-size : 110%;
+color : #fff;
+background : #f17c0b;
+}
+blockquote {
+font-weight : bold;
+font-style : italic;
+color : #b29b35;
+}
+.clear {
+clear : both;
+width : 100%;
+}
+.col3,.col3center {
+float: left;
+width: 30.5%;
+}
+.col3center {
+margin: 0 3%;
+}

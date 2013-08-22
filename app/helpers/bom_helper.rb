@@ -1,0 +1,2 @@
+module BomHelper
+end

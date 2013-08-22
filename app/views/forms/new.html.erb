@@ -1,0 +1,23 @@
+<h1>Bom Entry</h1>
+
+<%= form_for :form, url: forms_path do |f| %>
+
+  <p>
+    <%= f.label :Item %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :Attribute1 %><br>
+    <%= f.text_area :text %>
+  </p>
+  
+  <p>
+    <%= f.label :Attribute2 %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
