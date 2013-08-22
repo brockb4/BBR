@@ -10,7 +10,7 @@ color : #555;
 background : #f7f7f7;
 }
 #container {
-width : 99.5%;
+width : 99.9%;
 margin-left : auto;
 margin-right : auto;
 padding : 0;
@@ -23,7 +23,7 @@ background : #f7f7f7 url(images/image00.jpg) no-repeat;
 color : #333;
 }
 #banner h1 {margin : 0;
-padding : 5px;
+padding : 0;
 background : transparent;
 color : #fff;
 }
@@ -140,8 +140,7 @@ margin : 5px 10px 10px 15px;
 padding : 5px;
 }
 h1 {
-margin : 20px;
-padding : 5px;
+margin : 5px;
 font-size : 150%;
 letter-spacing : 3px;
 color : #fff;

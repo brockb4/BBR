@@ -34,7 +34,7 @@ background : #f7f7f7 url(images/image00.jpg) no-repeat;
 color : #333;
 }
 #banner h1 {margin : 0;
-padding : 5px;
+padding : 0px;
 background : transparent;
 color : #fff;
 }
