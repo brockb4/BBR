@@ -1,4 +1,4 @@
-class FormsController < ApplicationController
+class FormController < ApplicationController
 
 def new
   end
