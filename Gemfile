@@ -9,7 +9,9 @@ source 'https://rubygems.org'
  gem 'pg'
  #gem 'sqlite3'
 
-
+ gem 'will_paginate'
+ gem 'comma'
+ 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
