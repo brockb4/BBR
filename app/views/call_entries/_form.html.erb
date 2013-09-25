@@ -1,0 +1,85 @@
+<%= form_for @call_entry do |f| %>
+<style type="text/css">
+  input[type=text], textarea {
+    width: 95%;
+  }
+</style>
+<table>
+  <tbody>
+    <tr>
+      <th>Date</th>
+      <th>Logged By</th>
+      <th>Call Type</th>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :date, class: "datepicker" %></td>
+      <td><%= f.select :logged_by, CallEntry::LOGGEDBY %></td>
+      <td><%= f.select :call_type, CallEntry::CALLTYPE %></td>
+      <td><%= f.select :call_category, CallEntry::CALLCATEGORY %></td>
+    </tr>
+
+    <tr>
+      <th colspan="2">Customer Name</th>
+      <th>Product Group</th>
+      <th>Product (Brand / Description / Size)</th>
+    </tr>
+    <tr>
+      <td colspan="2"><%= f.text_field :customer_name %></td>
+      <td><%= f.select :product_group, CallEntry::PRODUCTGROUP %></td>
+      <td><%= f.text_field :product %></td>
+    </tr>
+
+    <tr>
+      <th colspan="2">Phone Number</th>
+      <th>Store</th>
+      <th>Customer Comments</th>
+    </tr>
+    <tr>
+      <td colspan="2"><%= f.text_field :phone_number %></td>
+      <td><%= f.text_field :store %></td>
+      <td rowspan="3"><%= f.text_area :customer_comments, rows: 5 %></td>
+    </tr>
+
+    <tr>
+      <th colspan="3">Address</th>
+    </tr>
+    <tr>
+      <td colspan="3"><%= f.text_field :address %></td>
+    </tr>
+
+    <tr>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Our Response</th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :city %></td>
+      <td><%= f.text_field :state %></td>
+      <td><%= f.text_field :zip %></td>
+      <td rowspan="3"><%= f.text_area :our_response, rows: 5 %></td>
+    </tr>
+
+    <tr>
+      <th>Lot Code</th>
+      <th>Plant</th>
+      <th>Reimburse</th>
+    </tr>
+
+    <tr>
+      <td><%= f.text_field :lot_code %></td>
+      <td><%= f.text_field :plant %></td>
+      <td><%= f.text_field :reimburse %></td>
+    </tr>
+
+    <tr>
+      <th></th>
+      <th><%= f.submit 'Log Customer Call' %></th>
+      <th></th>
+    </tr>
+
+  </tbody>
+</table>
+
+<% end %>

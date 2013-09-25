@@ -1,0 +1,4 @@
+$('#production_product_id')
+  .html('<%= options_from_collection_for_select(@products, :id, :item_number).gsub("\n", '') %>')
+  .change();
+

@@ -1,0 +1,2 @@
+module SaleComparesHelper
+end

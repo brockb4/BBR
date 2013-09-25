@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BBR</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title>Bonsal American: Bonsal Reporting Utility</title>
+  <%= stylesheet_link_tag "application", "jqueryui" %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery.combobox", "rails", "application" %>
+  <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="page">
+    <div id="content">
+      <div id="header">
+        <h1><%= link_to "Bonsal Reporting Utility", root_path %></h1>
+        <h2>The data you need when you need it</h2>
+      </div>
 
-<%= yield %>
-
+      <div id="getting-started">
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer">&nbsp;</div>
+  </div>
 </body>
 </html>

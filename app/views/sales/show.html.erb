@@ -1,0 +1,43 @@
+<%= form_tag sales_path(:csv), method: "POST" do %>
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+      <th>Plant</th>
+      <th>Business Line</th>
+      <th>Category</th>
+      <th>Type</th>
+    </tr>
+    <tr>
+      <td><%= select "sales", "facility_name", SalesReport.facilities, {}, multiple: true %></td>
+      <td><%= select "sales", "business_line", SalesReport.business_lines, {}, multiple: true %></td>
+      <td><%= select "sales", "group", SalesReport.categories, {}, multiple: true %></td>
+      <td><%= select "sales", "kind", SalesReport.types, {}, multiple: true %></td>
+    </tr>
+
+    <tr>
+      <th>Granularity</th>
+      <th>Date Range</th>
+      <th>Groupings</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr>
+      <td><%= select "sales", "granularity", SalesReport::GRANULARITY %></td>
+      <td>
+        From: <%= text_field "sales", "begin_date", class: "datepicker" %><br />
+        To: <%= text_field "sales", "end_date", class: "datepicker" %>
+      </td>
+      <td>
+        <%= check_box "sales", "customer" %> Customer Name<br/>
+        <%= check_box "sales", "city" %> City<br/>
+        <%= check_box "sales", "state" %> State<br/>
+        <%= check_box "sales", "status" %> Status<br/>
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <th colspan="2"><%= submit_tag 'Generate Sales Report' %></th>
+    </tr>
+  </tbody>
+</table>
+<% end %>

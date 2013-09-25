@@ -1,0 +1,25 @@
+<%= form_for @search, url: order_inventory_path(:csv), html: {method: "POST"} do |f| %>
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+    	<th>Patch</th>
+    	<th>State</th>
+    	<th>Store Number</th>
+    	<th>Assortment</th>
+    	<th>Description</th>
+    	<th>Item Number</th>
+    </tr>
+    <tr>
+      <td><%= f.select :patch_in, OrderInventory.patch, {}, multiple: true %></td>
+      <td><%= f.select :state_in, OrderInventory.state, {}, multiple: true %></td>
+      <td><%= f.select :store_num_in, OrderInventory.store_num, {}, multiple: true %></td>
+      <td><%= f.select :assortment_in, OrderInventory.assortment, {}, multiple: true %></td>
+      <td><%= f.select :description_in, OrderInventory.description, {}, multiple: true %></td>
+      <td><%= f.select :item_num_in, OrderInventory.item_num, {}, multiple: true %></td>
+    </tr>
+    <tr>
+      <th colspan="2"><%= f.submit 'Generate Report' %></th>
+    </tr>
+  </tbody>
+</table>
+<% end %>

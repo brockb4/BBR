@@ -1,0 +1,35 @@
+<%= form_for(@tonnage_code) do |f| %>
+  <% if @tonnage_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tonnage_code.errors.count, "error") %> prohibited this tonnage_code from being saved:</h2>
+
+      <ul>
+      <% @tonnage_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.label      :item_number %>
+    <%= f.text_field :item_number %>
+    <br/>
+    <%= f.label      :weight %>
+    <%= f.text_field :weight %>
+    <br/>
+    <%= f.label      :nitrogen %>
+    <%= f.text_field :nitrogen %>
+    <br/>
+    <%= f.label      :phosphorus %>
+    <%= f.text_field :phosphorus %>
+    <br/>
+    <%= f.label      :potash %>
+    <%= f.text_field :potash %>
+    <br/>
+    <%= f.label      :code %>
+    <%= f.text_field :code %>
+    <br/>
+    <%= f.submit %>
+  </div>
+<% end %>

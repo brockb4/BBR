@@ -1,10 +1,39 @@
 BBR::Application.routes.draw do
   #get "bom/index"
   
-  resources :forms
-  
-  root :to => 'bom#index'
-  
+  resources :clothings
+
+  root      to: "dashboard#index"
+
+  resource  :demands
+  resource  :sales
+  resource  :orders
+  resource  :order_items
+  resource  :order_status
+  resource  :royalty_reports
+  resource  :tonnage_report
+  resource  :lowes_sales
+  resource  :order_inventory
+  resource  :sales_compare
+  resource  :menards_price_reports
+  resource  :customer_support_logs
+  resource  :meijer_sales
+  resource  :forecast_volume
+
+  resources :forecast_updates
+  resources :royalty_companies
+  resources :tonnage_codes
+  resources :price_reports
+  resources :call_entries
+  resources :forecast_reviews
+  resources :master_forecasts
+
+  resources :productions do
+    collection do
+      get :limit_items
+      get :item_information
+    end
+  end
 end
   
   # The priority is based upon order of creation:

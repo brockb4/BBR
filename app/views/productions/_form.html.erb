@@ -1,0 +1,81 @@
+<%= form_for @production do |f| %>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 20%;">Facility</th>
+      <th style="width: 57%;">Type</th>
+      <th>Monthly Forecast Demand</th>
+    </tr>
+    <tr>
+      <td><%= f.collection_select :facility_id, Facility.order(:name).all, :id, :name, {include_blank: true}, class: "limiter" %></td>
+      <td><%= f.collection_select :kind, Product.types, :kind, :kind, {include_blank: true}, class: "limiter" %></td>
+      <td id="item_forecast"></td>
+    </tr>
+
+    <tr>
+      <th>Line</th>
+      <th>Group</th>
+      <th>Actual Month Sales</th>
+    </tr>
+    <tr>
+      <td><%= f.select :line, ["Manual", "Hess", "Premier Tech"], {}, class: "limiter" %></td>
+      <td><%= f.collection_select :group, Product.groups, :group, :group, {include_blank: true}, class: "limiter" %></td>
+      <td id="month_sales"></td>
+    </tr>
+
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Qty On Order/Demand</th>
+    </tr>
+    <tr>
+      <td><%= f.select :product_id, [], {}, class: "get_info" %></td>
+      <td><%= f.text_field :description, style: "width: 400px;" %></td>
+      <td id="item_demand"></td>
+    </tr>
+
+    <tr>
+      <th>Date</th>
+      <th>Production Quantity</th>
+      <th>Available</th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :production_date, class: "datepicker" %></td>
+      <td><%= f.text_field :produced_quantity %></td>
+      <td id="item_available"></td>
+    </tr>
+
+    <tr>
+      <th>Entry Weight</th>
+      <th>Scrap Quantity</th>
+      <th>Current Month</th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :entry_weight %></td>
+      <td><%= f.text_field :scrap_quantity %></td>
+      <td><%= Date.today.strftime("%B %Y") %></td>
+    </tr>
+
+    <tr>
+      <th>Hand Bags</th>
+      <th>Zip Bags</th>
+      <th>Premier Bags</th>
+    </tr>
+
+    <tr>
+      <td id="hand_bag_count"></td>
+      <td id="zip_bag_count"></td>
+      <td id="premier_bag_count"></td>
+    </tr>
+
+    <tr>
+      <th></th>
+      <th><%= f.submit 'Produce Finished Goods' %></th>
+      <th></th>
+    </tr>
+
+  </tbody>
+</table>
+
+<% end %>

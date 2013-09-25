@@ -1,0 +1,34 @@
+<%= form_tag demands_path(:csv), method: "POST" do %>
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+    	<th>Plant</th>
+    	<th>Business Line</th>
+    	<th>Category</th>
+    	<th>Type</th>
+    </tr>
+    <tr>
+      <td><%= select "demand", "facilities", Demand.facilities, {}, multiple: true %></td>
+      <td><%= select "demand", "business_lines", Demand.business_lines, {}, multiple: true %></td>
+      <td><%= select "demand", "categories", SalesReport.categories, {}, multiple: true %></td>
+      <td><%= select "demand", "types", SalesReport.types, {}, multiple: true %></td>
+    </tr>
+
+    <tr>
+      <th>Granularity</th>
+      <th>Date Range</th>
+    </tr>
+    <tr>
+      <td><%= select "demand", "granularity", Demand::GRANULARITY %></td>
+      <td>
+        From: <%= text_field "demand", "begin_date", class: "datepicker" %><br />
+        To: <%= text_field "demand", "end_date", class: "datepicker" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2"><%= submit_tag 'Generate Demand Report' %></th>
+    </tr>
+  </tbody>
+</table>
+<% end %>

@@ -1,0 +1,2 @@
+module CallEntriesHelper
+end

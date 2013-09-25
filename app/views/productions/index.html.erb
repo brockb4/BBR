@@ -1,0 +1,26 @@
+<h1>Productions -- <%= link_to "Create", new_production_path %></h1>
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th style="width: 20%;">Facility</th>
+      <th style="width: 40%;">Item</th>
+      <th style="width: 15%;">Date</th>
+      <th style="width: 15%;">Produced</th>
+      <th style="width: 10%;"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productions.each do |prod| %>
+    <tr>
+      <td><%= prod.facility.name %></td>
+      <td><%= prod.product.full_name %></td>
+      <td><%= prod.production_date.try(:to_date) %></td>
+      <td><%= prod.produced_quantity %></td>
+      <td><%= link_to "Edit", edit_production_path(prod) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @productions %>

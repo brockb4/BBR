@@ -1,0 +1,8 @@
+//$('#item_forecast').html('some value here');
+$('#production_description').val('<%= raw @product.description %>');
+$('#item_demand').html('<%= number_with_delimiter(@product.demand.to_i) %>');
+$('#item_available').html('<%= number_with_delimiter(@product.available) %>');
+$('#month_sales').html('<%= number_with_delimiter(@product.sales(:this_month)) %>');
+$('#hand_bag_count').html('<%= @product.hand_bags %>' || 0);
+$('#zip_bag_count').html('<%= @product.zip_bags %>' || 0);
+$('#premier_bag_count').html('<%= @product.premier_bags %>' || 0);

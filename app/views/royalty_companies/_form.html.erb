@@ -1,0 +1,52 @@
+<%= form_for(@royalty_company) do |f| %>
+  <% if @royalty_company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@royalty_company.errors.count, "error") %> prohibited this royalty_company from being saved:</h2>
+
+      <ul>
+      <% @royalty_company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table style="width: 70%;">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Less Freight?</th>
+        <th>Royalty %</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= f.text_field :name %></td>
+        <td><%= f.check_box :less_freight %></td>
+        <td><%= f.text_field :royalty %></td>
+        <td><%= f.submit %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item Number</th>
+        <th>Description</th>
+        <th>Remove?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :royalty_items do |fi| %>
+      <tr class="replicator">
+        <td><%= fi.text_field :item_number %></td>
+        <td><%= fi.object.description %></td>
+        <td><%= fi.check_box :_destroy unless fi.object.new_record? %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

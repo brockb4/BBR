@@ -1,0 +1,55 @@
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+      <td style="width: 50%">
+        <ul>
+          <li>
+            <h2><%= link_to 'Open Orders', orders_path(:csv) %></h2>
+            <p>Get spreadsheet of all current open orders</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Open Orders with Items', order_items_path(:csv) %></h2>
+            <p>Get spreadsheet of all open orders with item details</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Demand Report', demands_path %></h2>
+            <p>Detailed Demand Report</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Sales Report', sales_path %></h2>
+            <p>Detailed Sales Report</p>
+          </li>
+          
+          <li>
+            <h2><%= link_to "Forecasted Volume", forecast_volume_path %></h2>
+            <p>Future Forecast Volume Expectation</p>
+          </li>
+        </ul>
+      </td>
+      <td style="width: 50%">
+        <ul>
+          <li>
+            <h2><%= link_to 'Truckload Status Report', order_status_path %></h2>
+            <p>What loads have been booked and shipped</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Truckload Scheduling', royalty_reports_path %></h2>
+            <p>Schedule Trucks for Delivery</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Customer Call Log Entry', call_entries_path %></h2>
+            <p>Customer Support Call Log Entry</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Master Forecast Entry', master_forecasts_path %></h2>
+            <p>Enter view, update and export forecast data</p>
+          </li>
+          <li>
+            <h2><%= link_to 'Customer Support Call Reporting', customer_support_logs_path %></h2>
+            <p>Run Reports for Support Calls</p>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

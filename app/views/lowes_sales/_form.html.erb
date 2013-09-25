@@ -1,0 +1,52 @@
+<%= form_tag lowes_sales_path(:csv), method: "POST" do %>
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+      
+    	<th>Patch</th>
+    	<th>State</th>
+    	<th>Store Number</th>
+    	<th>District</th>
+    	<th>Region</th>
+    	<th>Assortment</th>
+    	<th>Description</th>
+    	<th>Item Number</th>
+
+    </tr>
+    
+    <tr>
+    
+      <td><%= select "lowes_sale", "patch", LowesSale.patch, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "state", LowesSale.state, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "store_num", LowesSale.store_num, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "district", LowesSale.district, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "region", LowesSale.region, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "assortment", LowesSale.assortment, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "description", LowesSale.description, {}, multiple: true %></td>
+      <td><%= select "lowes_sale", "item_number", LowesSale.item_num, {}, multiple: true %></td>
+
+    </tr>
+
+    <tr>
+      <th colspan="4">Date Range</th>
+      <th colspan="4">Regional Manager</th>  
+    </tr>
+    <tr>
+      <td colspan="4">
+        From: <%= text_field "lowes_sale", "begin_date", class: "datepicker" %><br />
+        To: <%= text_field "lowes_sale", "end_date", class: "datepicker" %> 
+      </td>
+      
+      <td colspan="6"><%= select "lowes_sale", "Representative", LowesSale.rep, {}, multiple: true %></td>
+      
+    </tr>  
+      <td colspan="2"><%= check_box "lowes_sale", "week" %> Weekly <br/><td>
+  
+    </tr>
+      
+      <th colspan="5"><%= submit_tag 'Generate Sales Report' %></th>
+    </tr>
+    
+  </tbody>
+</table>
+<% end %>

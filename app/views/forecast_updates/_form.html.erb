@@ -1,0 +1,51 @@
+<%= form_for(@forecast_update) do |f| %>
+  <% if @forecast_update.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forecast_update.errors.count, "error") %> prohibited this forecast_update from being saved:</h2>
+
+      <ul>
+      <% @forecast_update.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table style="width: 70%;" class="tableform">
+    <tbody>
+      <tr>
+        <th style="width:30%;">Business Line</th>
+        <td><%= f.text_field :business_line %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Customer</th>
+        <td><%= f.text_field :customer %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Item Number</th>
+        <td><%= f.text_field :item_number %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Item Name</th>
+        <td><%= f.text_field :item_name %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Current Plant</th>
+        <td><%= f.collection_select :current_plant, Facility.all, :name, :name %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Future Plant</th>
+        <td><%= f.collection_select :future_plant, Facility.all, :name, :name %></td>
+      </tr>
+      <tr>
+        <th style="width:30%;">Estimated Quantity</th>
+        <td><%= f.text_field :est_new_qty %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= f.hidden_field :unlive %>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_tag forecast_volume_path(:csv), :method => "POST", :class => "autocomplete" do %>
+<table style="width: 98%;">
+  <tr>
+    <th>Include Business Line</th>
+  	<th>Business Line</th>
+  	<th>Plant</th>
+  	<th>Monthly Breakdown</th>
+  </tr>
+  <tr>
+    <td><%= check_box "report", "include_bu", :checked => @search[:include_bu] %></td>
+    <td><%= select "report", "business_line", OrderItem.business_line, {:include_blank =>true, :selected => @search[:business_line]} %></td>
+    <td><%= select "report", "plant",         OrderItem.plant, {:selected => @search[:plant]} %></td>
+    <td><%= check_box "report", "monthly", :checked => @search[:monthly] %></td>
+  </tr>
+  <tr>
+  	<th>Product Group</th>
+  	<th>Product Type</th>
+  	<th>State</th>
+  </tr>
+  <tr>
+    <td><%= select "report", "product_group", OrderItem.product_group, {:selected => @search[:product_group]} %></td>
+    <td><%= select "report", "product_type",  OrderItem.product_type, {:selected => @search[:product_type]} %></td>
+    <td><%= select "report", "state", OrderItem.states, {:selected => @search[:state]} %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><%= submit_tag 'Export Data' %></th>
+  </tr>
+</table>
+<% end %>

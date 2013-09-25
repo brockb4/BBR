@@ -1,0 +1,25 @@
+<%= link_to "Create Call Entry", new_call_entry_path %>
+<br/>
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Call Type</th>
+      <th>Reimburse Amount</th>
+      <th>Call Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @call_entries.each do |entry| %>    
+    <tr>
+      <td><%= entry.customer_name %></td>
+      <td><%= entry.call_type %></td>
+      <td><%= entry.reimburse %></td>
+      <td><%= entry.date.to_date %></td>
+      <td><%= link_to 'Edit', edit_call_entry_path(entry) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate(@call_entries) %>

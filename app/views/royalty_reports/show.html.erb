@@ -1,0 +1,19 @@
+<%= form_tag royalty_reports_path(:csv), method: "POST" do %>
+<table style="width: 80%;">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td><%= select "royalty", "company_id", RoyaltyCompany.all.collect {|x| [x.name, x.id]} %></td>
+    <td><%= text_field "royalty", "start_date", class: "datepicker" %></td>
+    <td><%= text_field "royalty", "stop_date", class: "datepicker" %></td>
+    <td><%= submit_tag "Generate Royalty Report" %></td>
+  </tbody>
+</table>
+<% end %>

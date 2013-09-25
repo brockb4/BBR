@@ -1,0 +1,140 @@
+<%= form_tag master_forecasts_path, :method => "GET", :class => "autocomplete" do %>
+<table style="width: 98%;">
+  <tr>
+    <th>Include Business Line</th>
+  	<th>Business Line</th>
+  	<th>Customer</th>
+  	<th>By Line and Customer</th>
+  	<th>Include Sales (Export Only)</th>
+  </tr>
+  <tr>
+    <td><%= check_box "master_forecast", "include_bu", :checked => @search[:include_bu] %></td>
+    <td><%= select "master_forecast", "business_line", ForecastUpdate.business_line, {:include_blank =>true, :selected => @search[:business_line]} %></td>
+    <td><%= select "master_forecast", "customer_name", OrderItem.customer_name, {:include_blank =>true, :selected => @search[:customer_name]} %></td>
+    <td><%= check_box "master_forecast", "include_customer", :checked => @search[:include_customer] %></td>
+    <td><%= check_box "master_forecast", "include_sales", :checked => @search[:include_sales] %></td>
+  </tr>
+  <tr>
+  	<th>Plant</th>
+  	<th>Product Group</th>
+  	<th>Product Type</th>
+  	<th>State</th>
+  	<th>Data Select</th>
+  </tr>
+  <tr>
+    <td><%= select "master_forecast", "plant",         OrderItem.plant, {:selected => @search[:plant]} %></td>
+    <td><%= select "master_forecast", "product_group", OrderItem.product_group, {:selected => @search[:product_group]} %></td>
+    <td><%= select "master_forecast", "product_type",  OrderItem.product_type, {:selected => @search[:product_type]} %></td>
+    <td><%= select "master_forecast", "state",         OrderItem.states, {:selected => @search[:state]} %></td>
+    <td><%= select "master_forecast", "data_select",   MasterForecast::DATA_OPTIONS, {:selected => @search[:data_select]} %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><%= submit_tag 'Get Data' %></th>
+    <th><%= submit_tag 'Export Data', :class => 'export_csv' %></th>
+    <th><%= link_to 'Add New Location / Item', forecast_updates_path %></th> -
+  </tr>
+</table>
+<% end %>
+
+<%= form_for master_forecasts_path, :method => :post do |f| %>
+<table>
+  <tr>
+    <th>Current Plant</th>
+    <th>Future Plant</th>
+    <% if @search[:include_bu] %>
+      <th>Business Line</th>
+    <% end %>
+    <% if @search[:include_customer] %>
+      <th>Customer</th>
+    <% end %>
+    <th>Item Number</th>
+    <th>Item Name</th>
+    <th>TY YTD Units</th>
+    <th>LY YTD Units</th>
+    <th>Unit Growth</th>
+    <th>LY Full Year Units</th>
+    <th>TY Est Full Year Units</th>
+    <th>Est % change</th>
+    <th>Inv. This Year</th>
+    <th>Inv. Last Year</th>
+    <th>In Program Next Year</th>
+    <th>Est Next Year Units</th>
+  </tr>
+  <tr>
+    <th colspan="3"></th>
+    <% if @search[:include_bu] %><th></th><% end %>
+    <% if @search[:include_customer] %><th></th><% end %>
+    <th colspan="6" style="text-align: right;">Update ALL est % change:</th>
+    <th><input type="text" id="update_pct_change" size="4"/> </th>
+    <th colspan="4"></th>
+  </tr>
+  <% @records.each_with_index do |line, i| %>
+    <% upd = @forecast.fetch_update(line) || @forecast.fetch_update(line, false) %>
+    <tr class="forecast_record">
+      <td>
+        <%= line[:plant] %>
+        <% unless upd.new_record? %>
+          <%= hidden_field_tag "updates[#{i}][id]", upd.id %>
+        <% end %>
+        <%= hidden_field_tag "updates[#{i}][current_plant]", line[:plant] %>
+        <%= hidden_field_tag "updates[#{i}][item_number]", line[:item_number] %>
+        <%= hidden_field_tag "updates[#{i}][item_name]", line[:description] %>
+        <%= hidden_field_tag "updates[#{i}][est_new_qty]", upd.est_new_qty, :class => "est_new_qty" %>
+        <%= hidden_field_tag "updates[#{i}][unlive]", upd.unlive, :class => "unlive" %>
+      </td>
+      <td><%= select_tag "updates[#{i}][future_plant]", options_for_select(OrderItem.plant, upd.future_plant) %></td>
+      <% if @search[:include_bu] %>
+        <td>
+          <%= hidden_field_tag "updates[#{i}][business_line]", line[:business_line] %>
+          <%= line[:business_line] %>
+        </td>
+      <% end %>
+      <% if @search[:include_customer] %>
+        <td>
+          <%= line[:customer_name] %>
+          <%= hidden_field_tag "updates[#{i}][customer_name]", line[:customer_name] %>
+        </td>
+      <% end %>
+      <td><%= line[:item_number] %></td>
+      <td><%= line[:description] %></td>
+      <td><%= line[:ty_units].to_i %></td>
+      <td><%= line[:ly_units].to_i %></td>
+      <td><%= @forecast.unit_growth(line) %>%</td>
+      <td><%= line[:ly_full_year].to_i %></td>
+      <td class="year_full"><%= @forecast.year_growth(line) %></td>
+      <td>
+        <%= text_field_tag "updates[#{i}][pct_change]", upd.pct_change, :size => 4, :class => "pct_change" %>
+      </td>
+      <td><%= text_field_tag "updates[#{i}][inv_this_year]", upd.inv_this_year, :size => 4, :class => "this_inv" %></td>
+      <td><%= text_field_tag "updates[#{i}][inv_last_year]", upd.inv_last_year, :size => 4, :class => "last_inv" %></td>
+      <td>
+        <%= hidden_field_tag "updates[#{i}][in_program]", "0" %>
+        <%= check_box_tag "updates[#{i}][in_program]", 1, upd.in_program, :class => "in_program" %>
+      </td>
+      <td class="next_year_est">
+        <%= upd.est_new_qty %>
+      </td>
+    </tr>
+  <% end %>
+  <%# no idea wtf they are doing with this report now %>
+  <%# if @search[:include_bu] %>
+    <tr>
+      <td colspan="9">
+        <%= submit_tag 'Update Data' %>
+      </td>
+    </tr>
+  <%# end %>
+</table>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('form.autocomplete select').combobox();
+
+    $('input#update_pct_change').keyup(function() {
+      $('input.pct_change').val($(this).val()).keyup();
+    });
+  });
+</script>

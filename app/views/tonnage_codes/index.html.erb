@@ -1,0 +1,27 @@
+<h1>Listing tonnage_codes</h1>
+<%= will_paginate @tonnage_codes %>
+<table>
+  <tr>
+    <th>Item Number</th>
+    <th>Weight</th>
+    <th>Nitrogen</th>
+    <th>Phosphorus</th>
+    <th>Potash</th>
+    <th>Code</th>
+  </tr>
+
+<% @tonnage_codes.each do |tc| %>
+  <tr>
+    <td><%= link_to tc.item_number, edit_tonnage_code_path(tc) %></td>
+    <td><%= tc.weight %></td>
+    <td><%= tc.nitrogen %></td>
+    <td><%= tc.phosphorus %></td>
+    <td><%= tc.potash %></td>
+    <td><%= tc.code %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tonnage code', new_tonnage_code_path %>

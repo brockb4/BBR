@@ -1,0 +1,32 @@
+<%= form_tag meijer_sales_path(:csv), method: "POST" do %>
+<table style="width: 40%;">
+  <tbody>
+    <tr>
+    	<th>Store Number</th>
+    	<th>Sales Item</th>
+    </tr>
+
+    <tr>
+      <td><%= select "meijer_sale", "store_number",   MeijerPosSale.store_num, {}, multiple: true %></td>
+      <td><%= select "meijer_sale", "item_number", MeijerPosSale.items,     {}, multiple: true %></td>
+
+    </tr>
+
+    <tr>
+      <th colspan="4">Date Range</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        From: <%= text_field "meijer_sale", "begin_date", class: "datepicker" %><br />
+        To: <%= text_field "meijer_sale", "end_date", class: "datepicker" %></td>
+
+    </tr>
+      <td colspan="2"><%= check_box "meijer_sale", "week" %> Weekly <br/><td>
+
+    </tr>
+      <th colspan="2"><%= submit_tag 'Generate Sales Report' %></th>
+    </tr>
+
+  </tbody>
+</table>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_tag tonnage_report_path(:csv), method: "POST" do |f| %>
+
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+      <th>Date From</th>
+      <th>Date To</th>
+    </tr>
+    <tr>
+      <td>
+        <%= text_field "tonnage", "start_date", class: "datepicker" %><br />
+      </td>
+      <td>
+        <%= text_field "tonnage", "end_date", class: "datepicker" %>
+      </td>
+    </tr>
+    <tr>
+      <th>Brand</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr>
+      <td><%= select "tonnage", "brand", TonnageReport.brands %></td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+      <th>&nbsp;</th>
+      <th><%= submit_tag 'Generate Order Status Report' %></th>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>

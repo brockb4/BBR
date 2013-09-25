@@ -1,0 +1,36 @@
+<h1>Listing forecast_updates</h1>
+
+<%= link_to 'New Forecast update', new_forecast_update_path %>
+
+<%= will_paginate @forecast_updates %>
+<table style="width: 100%;">
+  <tr>
+    <th>Business Unit</th>
+    <th>Customer</th>
+    <th>Item #</th>
+    <th>Item Name</th>
+    <th>Current Plant</th>
+    <th>Future Plant</th>
+    <th>Estimated Quantity</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forecast_updates.each do |forecast_update| %>
+  <tr>
+    <td><%= forecast_update.business_line %></td>
+    <td><%= forecast_update.customer %></td>
+    <td><%= forecast_update.item_number %></td>
+    <td><%= forecast_update.item_name %></td>
+    <td><%= forecast_update.current_plant %></td>
+    <td><%= forecast_update.future_plant %></td>
+    <td><%= forecast_update.est_new_qty %></td>
+    <td><%= link_to 'Edit', edit_forecast_update_path(forecast_update) %></td>
+    <td><%= link_to 'Destroy', forecast_update_path(forecast_update), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @forecast_updates %>
+
+<br />
+<%= link_to 'New Forecast update', new_forecast_update_path %>

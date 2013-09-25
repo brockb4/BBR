@@ -1,0 +1,44 @@
+<%= form_tag customer_support_logs_path(:csv), method: "POST" do %>
+<table style="width: 90%;">
+  <tbody>
+    <tr>
+    	<th>Logged By</th>
+    	<th>Call Type</th>
+    	<th>Call Category</th>
+    	<th>State</th>
+    	<th>City</th>
+    </tr>
+    <tr>
+      <td><%= select "customer_support_log", "logged_by", CustomerSupportLog.logged_by, {}, multiple: true %></td>
+      <td><%= select "customer_support_log", "call_type", CustomerSupportLog.call_type, {}, multiple: true %></td>
+      <td><%= select "customer_support_log", "call_category", CustomerSupportLog.call_category, {}, multiple: true %></td>
+      <td><%= select "customer_support_log", "state", CustomerSupportLog.state, {}, multiple: true %></td>
+      <td><%= select "customer_support_log", "city", CustomerSupportLog.city, {}, multiple: true %></td>
+    </tr>
+    
+    <tr>
+    	<th>Product Group</th>
+    	<th colspan="4">Product</th>
+    </tr>
+    <tr>
+      <td><%= select "customer_support_log", "product_group", CustomerSupportLog.product_group, {}, multiple: true %></td>
+      <td colspan="4"><%= select "customer_support_log", "product", CustomerSupportLog.product, {}, multiple: true %></td>
+    </tr>
+
+    <tr>
+
+      <th colspan="4">Date Range</th>
+    </tr>
+    <tr>
+      <td colspan="4">
+        From: <%= text_field "customer_support_log", "begin_date", class: "datepicker" %><br />
+        To: <%= text_field "customer_support_log", "end_date", class: "datepicker" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2"><%= submit_tag 'Generate Call log Report' %></th>
+    </tr>
+  </tbody>
+</table>
+<% end %>
