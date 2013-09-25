@@ -32,3 +32,31 @@ production:
   host: localhost
   port: 5432
   encoding: UTF8
+  
+pos_sales_development:
+  adapter: postgresql
+  database: POS_Sales_Data
+  username: postgres
+  password: jgb51200
+  host: localhost
+  port: 5432
+  encoding: UTF8
+  
+cust_support_development:
+  adapter: postgresql
+  database: Customer_Support
+  username: postgres
+  password: jgb51200
+  host: localhost
+  port: 5432
+  encoding: UTF8
+  
+registration_development:
+  adapter: postgresql
+  database: Registration_data
+  username: postgres
+  password: jgb51200
+  host: localhost
+  port: 5432
+  encoding: UTF8
+  
