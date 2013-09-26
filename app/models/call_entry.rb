@@ -1,7 +1,7 @@
 class CallEntry < ActiveRecord::Base
 
   # == DATABASE CONNECTION
-  self.establish_connection(:production)#:cust_support_development)
+  self.establish_connection(:production) #:cust_support_development)
 
   set_table_name 'customer_support_log'
 

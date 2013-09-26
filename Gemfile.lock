@@ -70,6 +70,7 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    pg (0.17.0)
     pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -119,6 +120,7 @@ GEM
     will_paginate (3.0.5)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

@@ -1,7 +1,7 @@
 class MeijerPosSale < ActiveRecord::Base
 
   # == DATABASE CONNECTION
-  self.establish_connection(:pos_sales_development)
+  self.establish_connection(:production) #:pos_sales_development)
 
   class << self
     def begin_date
